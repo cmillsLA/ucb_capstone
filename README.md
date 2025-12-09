@@ -19,6 +19,8 @@ The analysis uses several years of historical reservation data from **recreation
 
 **Current Dataset**: `data/reservations_2024_california_sample.csv`
 
+**<a href="index.ipynb">View the application</a>
+
 ## Analysis and Predictions
 
 ### 1. Data Analysis Techniques
