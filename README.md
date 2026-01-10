@@ -19,7 +19,7 @@ The analysis uses several years of historical reservation data from **recreation
 
 **Current Dataset**: `data/reservations_2024_california_sample.csv`
 
-**<a href="index.ipynb">View the application</a>
+**<a href="index.ipynb">View the data visualizations</a>
 
 ## Analysis and Predictions
 
@@ -63,10 +63,21 @@ The analysis uses several years of historical reservation data from **recreation
 - Reducing frustration and improving success rates for securing reservations
 - Democratizing access to camping through better information
 
+
+## Recommendations
+Use the recommendation system to find the best available campsites based on text input.  Some example questions outlined here would be:
+1.  What campsites are likely available for a last minute trip next weekend?
+2.  What is the average lead time to book a campsite in {popular_park}?
+3.  What are the most popular parks for summer camping?
+4.  When is the best time to book for July?
+5.  What parks have the shortest wait times?
+
+**<a href="recommendations.ipynb">View the recommendations</a>
+
 ## License
 
 This project is for educational and research purposes.
 
 ## Acknowledgments
 
-Data sourced from recreation.gov, the official recreation resource for federal lands.
+Data sourced from <a href="https://recreation.gov">recreation.gov</a>, the official recreation resource for federal lands.
