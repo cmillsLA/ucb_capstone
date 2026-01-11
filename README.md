@@ -1,83 +1,60 @@
-# Campsite Reservation Analysis
+### Campsite Reservation Analysis
 
-## Question
+#### Executive Summary
 
-**What are the best times of year to book a campsite and what is the typical lead time required?**
+This project analyzes California campsite reservation patterns using data from Recreation.gov to provide insights for optimizing campsite bookings. Using machine learning techniques I developed a comprehensive system that forecasts demand, segments customer behavior, and recommends campsites through a natural language interface.
 
-## Project Overview
+Users can interact with historical data to plan their trip or find similar alternatives to popular campsites.  This recommendation system helps users understand optimal booking windows, discover alternative parks, and receive instant answers to natural language queries like "What campsites are available for last minute trips?" This addresses the critical problem of popular campsites filling within minutes of availability, improving booking success rates for families and outdoor enthusiasts.
 
-This project analyzes campsite reservation patterns using data from recreation.gov to help campers understand optimal booking lead times and campsite popularity. With popular campsites becoming increasingly difficult to book, this analysis provides data-driven insights into when to book and how far in advance to plan.
+#### Rationale
+Given the limitations of the Recration.gov website, it can be very time consuming to find available campsites.  This is especially true during peak season or for popular campsites.  This recommendation system will help users find alternative campsites or understand the appropriate lead time to book a site that is more popular.  In addition, this can be used to find campsites that are likely to be available for a last minute weekend trip.
 
-## Data Source
+#### Research Question
+This research addresses three key questions:
+1. How far in advance do campers typically book reservations for different seasons?
+2. Which parks and time periods have the highest demand and longest lead times?
+3. Can we predict optimal booking windows and recommend alternative campsites based on historical patterns?
 
-The analysis uses several years of historical reservation data from **recreation.gov**, the primary platform for booking campsites across the United States. The dataset includes:
+#### Data Sources
+Data sourced from <a href="https://recreation.gov">recreation.gov</a>, the official recreation resource for federal lands.
 
-- Reservation dates (booking date and arrival date)
-- Park/campsite information
-- Stay duration and party size
-- Geographic location data
+#### Methodology
+This analysis employs a multi-faceted approach combining exploratory data analysis, machine learning, and recommender systems:
 
-**Current Dataset**: `data/reservations_2024_california_sample.csv`
+**1.  Exploratory Data Analysis & Visualization:**
+- Lead time distribution analysis and percentile calculations
+- Seasonal booking pattern identification
+- Booking month vs. arrival month heatmaps
+- Park popularity rankings and demand trends
 
-**<a href="index.ipynb">View the data visualizations</a>
+**2. Predictive Modeling**
+- Decision Tree Regression: Baseline model for demand forecasting using temporal features (month, day of week, quarter, seasonal indicators)
+- Gradient Boosting: Enhanced model leveraging gradient descent optimization for improved prediction accuracy
+- K-means Clustering: Customer segmentation to identify distinct booking behavior patterns (last-minute bookers, planners, weekend campers)
 
-## Analysis and Predictions
+**3. Recommendation Systems**
+- Item-Based Collaborative Filtering: Identifies similar parks based on shared booking patterns
+- User-Based Collaborative Filtering: Recommends parks based on similar user profiles (booking timing, duration, planning horizon)
+- Natural Language Query Interface: Allows users to ask questions in plain English about availability, lead times, and recommendations
 
-### 1. Data Analysis Techniques
+**4. Model Evaluation**
+- R² scores and mean squared error for predictive models
+- Silhouette scores for clustering quality
+- Cosine similarity metrics for recommendation accuracy
 
-#### Decision Tree Regression
-- **Purpose**: Demand and occupancy forecasting
-- **Rationale**: Decision Trees effectively capture non-linear, time-based patterns in seasonal camping demand
-- **Features**: Month, day of week, quarter, weekend indicators, seasonal flags, park popularity, and historical lead times
+#### Results
+- **Peak booking periods** occur during summer months (June-August), requiring significantly longer lead times (90+ days)
+- **Customer segmentation** revealed distinct camper profiles: last-minute bookers, weekend warriors, and advance planners
+- **Recommendation system** successfully identifies similar parks and provides personalized suggestions based on booking patterns
 
-#### K-means Clustering
-- **Purpose**: Customer behavior segmentation
-- **Rationale**: Identifies distinct camper segments based on booking patterns, which affects occupancy forecasting
-- **Features**: Lead time patterns, stay duration, group size, booking volume, and planning consistency
+#### Next steps
+- **Direct linking to campsite** allow users to visit the campsite booking url directly from the recommendation results
+- **Geolocation** when searching for similar campsites, use the geolocation of the campsite identified in the user input
 
-### 2. Exploratory Data Analysis
-- Lead time distribution analysis
-- Monthly reservation patterns
-- Booking timeline heatmaps
-- Park popularity rankings
-- Percentile-based booking insights
+#### Outline of project
+- **<a href="index.ipynb">Load the data, vizualizations</a>**
+- **<a href="recommendations.ipynb">View the recommendations</a>**
 
-## Expected Results
-
-1. **Optimal Booking Times**: Clear identification of peak and off-peak seasons for campsite reservations
-2. **Lead Time Recommendations**: Data-driven guidance on how far in advance to book for different times of year
-3. **Customer Segments**: Understanding of different camper behavior patterns and their impact on availability
-4. **Park-Specific Insights**: Demand patterns for the most popular state parks
-
-### Future Enhancements
-- Geolocation-based filtering to provide region-specific recommendations
-- Predictive booking difficulty scores for specific parks and dates
-- Real-time availability integration
-
-## Why This Matters
-
-**Booking popular campsites has become increasingly difficult**, with many sites filling up within minutes of becoming available. This analysis addresses a critical need for campers by:
-
-- Providing strategic booking guidance based on historical data
-- Helping families and outdoor enthusiasts plan vacations more effectively
-- Reducing frustration and improving success rates for securing reservations
-- Democratizing access to camping through better information
-
-
-## Recommendations
-Use the recommendation system to find the best available campsites based on text input.  Some example questions outlined here would be:
-1.  What campsites are likely available for a last minute trip next weekend?
-2.  What is the average lead time to book a campsite in {popular_park}?
-3.  What are the most popular parks for summer camping?
-4.  When is the best time to book for July?
-5.  What parks have the shortest wait times?
-
-**<a href="recommendations.ipynb">View the recommendations</a>
-
-## License
+#### License
 
 This project is for educational and research purposes.
-
-## Acknowledgments
-
-Data sourced from <a href="https://recreation.gov">recreation.gov</a>, the official recreation resource for federal lands.
